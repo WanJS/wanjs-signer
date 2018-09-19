@@ -22,6 +22,7 @@ function bnToBuffer(bn) {
 }
 
 const transactionFields = [
+  { name: 'Txtype' },
   { name: 'nonce', maxLength: 32, number: true },
   { name: 'gasPrice', maxLength: 32, number: true },
   { name: 'gasLimit', maxLength: 32, number: true },

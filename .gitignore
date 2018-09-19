@@ -6,3 +6,4 @@ lib
 # Cruft
 .DS_Store
 npm-debug.log
+.idea

@@ -1,8 +1,8 @@
 const sign = require('../index.js').sign; // eslint-disable-line
 const recover = require('../index.js').recover;
-const TestRPC = require('ethereumjs-testrpc'); // eslint-disable-line
+const TestRPC = require('wanache-cli'); // eslint-disable-line
 const Eth = require('ethjs-query'); // eslint-disable-line
-const EthTx = require('ethereumjs-tx'); // eslint-disable-line
+const EthTx = require('wanchainjs-tx'); // eslint-disable-line
 const generate = require('ethjs-account').generate; // eslint-disable-line
 const publicToAddress = require('ethjs-account').publicToAddress; // eslint-disable-line
 const assert = require('chai').assert;
@@ -20,6 +20,7 @@ describe('recover', () => {
     it('should recover from signed tx string', () => {
       const testAccount = generate('sdkjfhskjhskhjsfkjhsf093j9sdjfpisjdfoisjdfisdfsfkjhsfkjhskjfhkshdf');
       const rawTx = {
+        Txtype: '0x01',
         to: testAccount.address.toLowerCase(),
         nonce: `0x${new BN(0).toString(16)}`,
         gasPrice: `0x${new BN(0).toString(16)}`,
@@ -30,9 +31,9 @@ describe('recover', () => {
       const signedTx = sign(rawTx, testAccount.privateKey, true);
       const signedTxString = sign(rawTx, testAccount.privateKey);
       const publicKey = recover(signedTxString,
-        (new BN(signedTx[6].toString('hex'), 16).toNumber(10)),
-        signedTx[7],
-        signedTx[8]);
+        (new BN(signedTx[7].toString('hex'), 16).toNumber(10)),
+        signedTx[8],
+        signedTx[9]);
       const address = publicToAddress(publicKey);
       assert.equal(address, testAccount.address);
     });
@@ -40,6 +41,7 @@ describe('recover', () => {
     it('should recover from signed tx buffer', () => {
       const testAccount = generate('sdkjfhskjhskhjsfkjhsf093j9sdjfpisjdfoisjdfisdfsfkjhsfkjhskjfhkshdf');
       const rawTx = {
+        Txtype: '0x01',
         to: testAccount.address.toLowerCase(),
         nonce: `0x${new BN(0).toString(16)}`,
         gasPrice: `0x${new BN(0).toString(16)}`,
@@ -50,9 +52,9 @@ describe('recover', () => {
       const signedTx = sign(rawTx, testAccount.privateKey, true);
       const signedTxBuffer = new Buffer(stripHexPrefix(sign(rawTx, testAccount.privateKey)), 'hex');
       const publicKey = recover(signedTxBuffer,
-        (new BN(signedTx[6].toString('hex'), 16).toNumber(10)),
-        signedTx[7],
-        signedTx[8]);
+        (new BN(signedTx[7].toString('hex'), 16).toNumber(10)),
+        signedTx[8],
+        signedTx[9]);
       const address = publicToAddress(publicKey);
       assert.equal(address, testAccount.address);
     });
@@ -105,6 +107,7 @@ describe('sign', () => {
       });
       const eth = new Eth(provider);
       const rawTx = {
+        Txtype: '0x01',
         to: '0x6023E44829921590b24f458c9eE4F544507d59B6',
         gas: 300000,
         value: new BN(450000),
@@ -135,6 +138,7 @@ describe('sign', () => {
       for (var i = 0; i < 1000; i++) { // eslint-disable-line
         const testAccount = generate('sdkjfhskjhskhjsfkjhsf093j9sdjfpisjdfoisjdfisdfsfkjhsfkjhskjfhkshdf');
         const rawTx = {
+          Txtype: '0x01',
           to: testAccount.address.toLowerCase(),
           nonce: `0x${new BN(0).toString(16)}`,
           gasPrice: `0x${new BN(0).toString(16)}`,

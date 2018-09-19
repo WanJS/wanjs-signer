@@ -1,43 +1,22 @@
-## ethjs-signer
+## wanjs-signer
 
-<div>
-  <!-- Dependency Status -->
-  <a href="https://david-dm.org/ethjs/ethjs-signer">
-    <img src="https://david-dm.org/ethjs/ethjs-signer.svg"
-    alt="Dependency Status" />
-  </a>
+[![CircleCI][circle-image]][circle-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
+[![dependency status][dep-image]][dep-url]
+[![NPM][npm-image]][npm-url]
 
-  <!-- devDependency Status -->
-  <a href="https://david-dm.org/ethjs/ethjs-signer#info=devDependencies">
-    <img src="https://david-dm.org/ethjs/ethjs-signer/dev-status.svg" alt="devDependency Status" />
-  </a>
+[circle-image]: https://circleci.com/gh/WanJS/wanjs-signer.svg?style=svg
+[circle-url]: https://circleci.com/gh/WanJS/wanjs-signer
+[dep-image]: https://david-dm.org/WanJS/wanjs-signer.svg
+[dep-url]: https://david-dm.org/WanJS/wanjs-signer
+[coveralls-image]: https://coveralls.io/repos/github/WanJS/wanjs-signer/badge.svg?branch=dev
+[coveralls-url]: https://coveralls.io/github/WanJS/wanjs-signer?branch=dev
+[npm-image]: http://img.shields.io/npm/v/wanjs-signer.svg
+[npm-url]: https://www.npmjs.org/package/wanjs-signer
 
-  <!-- Build Status -->
-  <a href="https://travis-ci.org/ethjs/ethjs-signer">
-    <img src="https://travis-ci.org/ethjs/ethjs-signer.svg"
-    alt="Build Status" />
-  </a>
 
-  <!-- NPM Version -->
-  <a href="https://www.npmjs.org/package/ethjs-signer">
-    <img src="http://img.shields.io/npm/v/ethjs-signer.svg"
-    alt="NPM version" />
-  </a>
 
-  <!-- Test Coverage -->
-  <a href="https://coveralls.io/r/ethjs/ethjs-signer">
-    <img src="https://coveralls.io/repos/github/ethjs/ethjs-signer/badge.svg" alt="Test Coverage" />
-  </a>
-
-  <!-- Javascript Style -->
-  <a href="http://airbnb.io/javascript/">
-    <img src="https://img.shields.io/badge/code%20style-airbnb-brightgreen.svg" alt="js-airbnb-style" />
-  </a>
-</div>
-
-<br />
-
-A simple Ethereum signing and recovery utility.
+A simple Wanchain signing and recovery utility.
 
 **WARNING: This module does not have EIP155 replay protection, do not use until it is upgraded.**
 
@@ -53,7 +32,7 @@ npm install --save ethjs-signer
 const HttpProvider = require('ethjs-provider-http');
 const Eth = require('ethjs-query');
 const eth = new Eth(new HttpProvider('http://localhost:8545'));
-const sign = require('ethjs-signer').sign;
+const sign = require('wanjs-signer').sign;
 const BN = require('bignumber.js');
 
 const address = '0x0F6af8F8D7AAD198a7607C96fb74Ffa02C5eD86B';
